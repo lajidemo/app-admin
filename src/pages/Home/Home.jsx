@@ -7,6 +7,14 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 export default class Home extends Component {
+  state = {
+    collapsed: true
+  }
+  onCollapse = (collapsed ) => {
+    this.setState({
+      collapsed,
+    })
+  }
   render() {
     return (
       <Layout className="Home">
@@ -19,7 +27,9 @@ export default class Home extends Component {
           </Menu>
         </Header>
         <Layout>
-          <Sider width={200} className="site-layout-background">
+          <Sider
+            collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
+            className="site-layout-background">
             <Menu
               mode="inline"
               theme="dark"
@@ -54,7 +64,6 @@ export default class Home extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Content
-              className="site-layout-background"
               style={{
                 padding: 24,
                 margin: 0,
