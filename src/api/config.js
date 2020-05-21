@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
 import { Spin } from 'antd';
@@ -27,46 +27,39 @@ function hideLoading() {
   }
 }
 
-// const setInterceptors = (v) => {
-  // Add a request interceptor
-  Axios.interceptors.request.use(function (config) {
-    // Do something before request is sent
-    if(config){
-      if(!config.hideLoading){
-        showLoading()
-      }
+Axios.interceptors.request.use(function (config) {
+  if(config){
+    if(!config.hideLoading){
+      showLoading()
     }
-    return config;
-  }, function (error) {
-    // Do something with request error
-    if(error.config){
-      if(!error.config.hideLoading){
-        hideLoading()
-      }
+  }
+  return config;
+}, function (error) {
+  if(error.config){
+    if(!error.config.hideLoading){
+      hideLoading()
     }
-    return Promise.reject(error);
-  });
+  }
+  return Promise.reject(error);
+});
 
-  // Add a response interceptor
-  Axios.interceptors.response.use(function (response) {
-    // Do something with response data
-    if(response.config){
-      if(!response.config.hideLoading){
-        hideLoading()
-      }
+Axios.interceptors.response.use(function (response) {
+  if(response.config){
+    if(!response.config.hideLoading){
+      hideLoading()
     }
-    return response;
-  }, function (error) {
-    if(error.config){
-      if(!error.config.hideLoading){
-        hideLoading()
-      }
+  }
+  return response;
+}, function (error) {
+  if(error.config){
+    if(!error.config.hideLoading){
+      hideLoading()
     }
-    // Do something with response error
-    return Promise.reject(error);
-  });
-// }
+  }
+  return Promise.reject(error);
+});
 
-Component.prototype.$axios = Axios
 
-// export default Axios
+export default {
+  Axios
+}

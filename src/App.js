@@ -2,7 +2,6 @@ import React from 'react';
 import {HashRouter, Route, Switch} from 'react-router-dom'
 import Login from './pages/Login'
 import Admin from './pages/Admin'
-import './api/config'
 import './style.less'
 
 function App() {
