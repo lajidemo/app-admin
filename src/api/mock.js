@@ -1,3 +1,5 @@
+// 拦截指定axios请求，返回mock数据
+
 import Mock from 'mockjs'
 import common from './common'
 
