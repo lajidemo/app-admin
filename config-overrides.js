@@ -1,5 +1,6 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra');
 const { getThemeVariables } = require('antd/dist/theme');
+const path = require('path');
 
 module.exports = override(
   fixBabelImports('antd', {
@@ -12,8 +13,17 @@ module.exports = override(
       // modifyVars: { '@primary-color': '#111d2c' },
       modifyVars: getThemeVariables({
         dark: true, // 开启暗黑模式
-        // compact: true, // 开启紧凑模式
+        compact: true, // 开启紧凑模式
       }),
     },
   }),
+  addWebpackAlias({
+    '@': path.join(__dirname, './src'),
+    'public': path.join(__dirname, './public'),
+    'api': path.join(__dirname, './src/api'),
+    'components': path.join(__dirname, './src/components'),
+    'pages': path.join(__dirname, './src/pages'),
+    'utils': path.join(__dirname, './src/utils'),
+    'config': path.join(__dirname, './src/config'),
+  })
 );

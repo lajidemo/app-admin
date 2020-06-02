@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
+import LeftNavs from 'components/LeftNavs'
+import utils from 'utils'
 import Home from '../Home'
-import LeftNavs from '../../components/LeftNavs'
+import Categroy from '../Categroy'
+import Product from '../Product'
+import Role from '../Role'
 import './style.css'
 
 const { Header, Content, Sider } = Layout;
@@ -11,26 +15,26 @@ export default class Admin extends Component {
   state = {
     collapsed: true
   }
-  onCollapse = (collapsed ) => {
+  onCollapse = (collapsed) => {
     this.setState({
       collapsed,
     })
   }
   render() {
+    console.log('-----',utils.judgeLoginExpired())
+    if(utils.judgeLoginExpired()){
+      return <Redirect to='/Login'></Redirect>
+    }
     return (
       <Layout className="Home">
         <Header className="header">
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
         </Header>
         <Layout>
           <Sider
+            // 设置是否可收起左边导航栏
             collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
-            className="site-layout-background">
+            >
               <LeftNavs></LeftNavs>
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
@@ -43,6 +47,9 @@ export default class Admin extends Component {
             >
               <Switch>
                 <Route path='/Home' component={Home}></Route>
+                <Route path='/Categroy' component={Categroy}></Route>
+                <Route path='/Product' component={Product}></Route>
+                <Route path='/Role' component={Role}></Route>
                 <Redirect to='/Home'></Redirect>
               </Switch>
             </Content>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
 import { message, Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 // import axios from 'axios'
-import common from '../../api/common'
+import common from 'api/common'
+import utils from 'utils'
 import './style.less'
 
 export default class Login extends Component {
@@ -15,14 +17,16 @@ export default class Login extends Component {
       user_name: values.username,
       user_password: values.password,
     }
-    this.$axios.post(common.test,params)
+    this.$axios.post(common.login,params)
       .then(res => {
         console.log('response==',res)
         if(res.data.status_code === 200){
           message.success('登录成功');
-          this.props.history.push('/')
+          const nowDate = Date.now();
+          localStorage.setItem('nowDate',nowDate)
+          this.props.history.push('/Admin')
         }else{
-          message.error('登录失败');
+          message.error('用户名或密码错误');
         }
       })
       .catch(error => {
@@ -31,6 +35,10 @@ export default class Login extends Component {
       })
   };
   render() {
+    console.log('-----',utils.judgeLoginExpired())
+    if(!utils.judgeLoginExpired()){
+      return <Redirect to='/Admin'></Redirect>
+    }
     return (
       <div className='form-content'>
         <Form

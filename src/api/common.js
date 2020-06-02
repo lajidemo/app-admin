@@ -1,6 +1,6 @@
 // 接口名列表
 
 let common = {}
-common.test = '/api/user/login'
+common.login = '/api/user/login'
 
 export default common

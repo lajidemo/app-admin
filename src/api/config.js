@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
 import { Spin } from 'antd';
@@ -67,6 +67,17 @@ function hideLoading() {
   });
 // }
 
-Component.prototype.$axios = Axios
+function get(url,data,config){
+  return Axios.get(url,{params: data},config)
+}
+
+function post(url,data,config){
+  return Axios.post(url,data,config)
+}
+
+export default {
+  get,
+  post
+}
 
 // export default Axios

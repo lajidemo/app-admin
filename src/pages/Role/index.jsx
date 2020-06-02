@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import './style.css'
 
-export default class Home extends Component {
+export default class Role extends Component {
   state = {
     mockObj: {}
   }
   render() {
     return (
       <div>
-        Home
+        Role
       </div>
     )
   }
