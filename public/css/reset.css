@@ -94,6 +94,22 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar{width:9px; background-color:#1f1f1f;}
+::-webkit-scrollbar-thumb{border:solid 2px #1f1f1f; width:5px;  border-radius:4px; background-color:#f94f73;}
+::-webkit-scrollbar-corner{background-color:#1f1f1f;}
+::-webkit-scrollbar:horizontal{height:9px;}
+::-webkit-selection{background:#f94f73;color:#fff;}
+::-moz-selection{background:#f94f73;color:#fff;} 
+::selection {background:#f94f73;color:#fff;} 
+
+/* ::-webkit-scrollbar 滚动条整体，可以设置宽度等①
+::-webkit-scrollbar-button 滚动条两端的按钮②
+::-webkit-scrollbar-track 外层轨道③
+::-webkit-scrollbar-track-piece 内层滚动槽④
+::-webkit-scrollbar-thumb 滚动的滑块⑤
+::-webkit-scrollbar-corner 边角⑥
+::-webkit-resizer 下角拖动块的样式⑦ */
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

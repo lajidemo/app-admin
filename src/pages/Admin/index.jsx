@@ -9,11 +9,11 @@ import Product from '../Product'
 import Role from '../Role'
 import './style.css'
 
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 export default class Admin extends Component {
   state = {
-    collapsed: true
+    collapsed: false
   }
   onCollapse = (collapsed) => {
     this.setState({
@@ -37,14 +37,8 @@ export default class Admin extends Component {
             >
               <LeftNavs></LeftNavs>
           </Sider>
-          <Layout style={{ padding: '0 24px 24px' }}>
-            <Content
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
-            >
+          <Content style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '24px',flex: 1 }}>
               <Switch>
                 <Route path='/Home' component={Home}></Route>
                 <Route path='/Categroy' component={Categroy}></Route>
@@ -52,8 +46,11 @@ export default class Admin extends Component {
                 <Route path='/Role' component={Role}></Route>
                 <Redirect to='/Home'></Redirect>
               </Switch>
-            </Content>
-          </Layout>
+            </div>
+            <Footer>
+              庄同学有限公司提供技术支持
+            </Footer>
+          </Content>
         </Layout>
       </Layout>
     )
