@@ -41,5 +41,14 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-dynamic-import-node": "^2.3.3"
+  },
+  "babel": {
+    "development": {
+      "plugins": [
+        "dynamic-import-node"
+      ]
+    }
+  }
 }
