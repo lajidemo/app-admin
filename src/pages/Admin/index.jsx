@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { Layout } from 'antd';
 import LeftNavs from 'components/LeftNavs'
+import NULLHeader from 'components/NULLHeader'
 import utils from 'utils'
 import Home from '../Home'
 import Categroy from '../Categroy'
@@ -9,7 +10,7 @@ import Product from '../Product'
 import Role from '../Role'
 import './style.css'
 
-const { Header, Content, Sider, Footer } = Layout;
+const { Content, Sider, Footer } = Layout;
 
 export default class Admin extends Component {
   state = {
@@ -27,9 +28,7 @@ export default class Admin extends Component {
     }
     return (
       <Layout className="Home">
-        <Header className="header">
-          <div className="logo" />
-        </Header>
+        <NULLHeader />
         <Layout>
           <Sider
             // 设置是否可收起左边导航栏

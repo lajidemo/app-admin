@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import { Menu } from 'antd';
 // import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import * as Icon from '@ant-design/icons';
+// import * as Icon from '@ant-design/icons';
 import leftMenuList from 'config/leftMenuList'
+import NULLIcon from 'components/NULLIcon'
 
 const { SubMenu, Item } = Menu;
 
@@ -12,9 +13,7 @@ class LeftNavs extends Component {
     return menuList.map(item => {
       if(!item.children){
         return (
-          <Item key={item.key} icon={React.createElement(
-            Icon[item.icon],
-          )} title={item.title}>
+          <Item key={item.key} icon={<NULLIcon iconName={item.icon}/>} title={item.title}>
             <Link to={item.key}>
               {item.title}
             </Link>
@@ -22,9 +21,7 @@ class LeftNavs extends Component {
         )
       }else{
         return (
-          <SubMenu key={item.key} icon={React.createElement(
-            Icon[item.icon],
-          )} title={item.title}>
+          <SubMenu key={item.key} icon={<NULLIcon iconName={item.icon}/>} title={item.title}>
             {
               this.flatMenuList(item.children)
             }
