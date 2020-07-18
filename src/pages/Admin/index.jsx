@@ -40,9 +40,12 @@ export default class Admin extends Component {
             <div style={{ padding: '24px',flex: 1 }}>
               <Switch>
                 <Route path='/Home' component={Home}></Route>
-                <Route path='/Categroy' component={Categroy}></Route>
-                <Route path='/Product' component={Product}></Route>
+                <Route path='/Product/Categroy' component={Categroy}></Route>
+                <Route path='/Product/Goods' component={Product}></Route>
                 <Route path='/Role' component={Role}></Route>
+                <Route path='/Charts/Bar' component={Role}></Route>
+                <Route path='/Charts/Line' component={Role}></Route>
+                <Route path='/Charts/Pie' component={Role}></Route>
                 <Redirect to='/Home'></Redirect>
               </Switch>
             </div>
